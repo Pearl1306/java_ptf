@@ -3,19 +3,18 @@ package ru.stqa.pft.sandbox;
 public class MyFirstProgram {
 
     public static void main(String[] args) {
-        hello ("world");
-        hello("user");
-        hello("Natali");
-        Square s= new Square(5);
-        System.out.println("Ploshad kvadrata so storonoy " + s.l +"="+ s.area ());
+      System.out.println("Hello,world!");
 
-        Rectangle r = new Rectangle(4,6);
-        System.out.println("Ploshad praymougolnika so storonami "+r.a+" i "+r.b+"=" +r.area());
+      Point p1 = new Point (11,22);
+      Point p2 = new Point (22,31);
+
+      System.out.println("Rastoyanie mejdu dvumya tochkami "+"p1 i p2"+"="+p1.distance( p2) );
+
 
     }
-    public static void hello (String somebody)  {
 
-        System.out.println("Hello,"+somebody+"!");
-    }
 
+
+
+    
 }
