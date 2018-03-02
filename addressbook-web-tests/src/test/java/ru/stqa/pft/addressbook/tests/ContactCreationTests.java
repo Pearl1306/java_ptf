@@ -7,10 +7,10 @@ public class ContactCreationTests extends TestBase {
 
   @Test
   public void testsContactCreation() {
-    addNew();
-    fillContactForm(new ContactData("otvet0", "otvet1", "otvet2", "otvet3", "44 otvet4", "1234567890", "2345678901", "3456789012", "otvet5@gmail.com"));
-    submit();
-    gotoContainer();
+    helper.addNew();
+    helper.fillContactForm(new ContactData("otvet0", "otvet1", "otvet2", "otvet3", "44 otvet4", "1234567890", "2345678901", "3456789012", "otvet5@gmail.com"));
+    helper.submit();
+    helper.gotoContainer();
   }
 
 
