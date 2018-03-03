@@ -2,8 +2,6 @@ package ru.stqa.pft.addressbook.appManager;
 
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import ru.stqa.pft.addressbook.tests.ContactHelper;
-
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
@@ -34,7 +32,9 @@ public class ApplicationManager {
   public GroupHelper getGroupHelper() {
     return groupHelper;
   }
-
+  public ContactHelper getHelper() {
+    return helper;
+  }
   public NavigationHelper getNavigationHelper() {
     return navigationHelper;
   }

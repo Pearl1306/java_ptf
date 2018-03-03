@@ -1,11 +1,9 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import ru.stqa.pft.addressbook.appManager.ApplicationManager;
-import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.appManager.ContactHelper;
 
 public class TestBase {
   public ContactHelper helper;
@@ -23,7 +21,5 @@ public class TestBase {
     app.stop();
   }
 
-  public ContactHelper getHelper() {
-    return helper;
-  }
+
 }
