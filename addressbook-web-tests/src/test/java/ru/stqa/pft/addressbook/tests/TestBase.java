@@ -9,7 +9,7 @@ import ru.stqa.pft.addressbook.appManager.ContactHelper;
 public class TestBase {
   public ContactHelper helper;
 
-  public final ApplicationManager app = new ApplicationManager(BrowserType.FIREFOX);
+  public final ApplicationManager app = new ApplicationManager(BrowserType.CHROME);
 
 
   @BeforeMethod
