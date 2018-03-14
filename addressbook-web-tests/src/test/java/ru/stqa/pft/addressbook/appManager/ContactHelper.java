@@ -77,4 +77,11 @@ public class ContactHelper extends HelperBase {
   public void returnToHomePage() {
     click(By.linkText("home page"));
   }
+
+  public void createContact(ContactData contact) {
+    addNew();
+    fillContactForm(contact);
+    submit();
+    gotoContainer();
+  }
 }
