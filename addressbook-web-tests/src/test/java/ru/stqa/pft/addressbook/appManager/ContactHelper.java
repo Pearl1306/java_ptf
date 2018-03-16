@@ -48,9 +48,6 @@ public class ContactHelper extends HelperBase {
     wd.findElement(locator).sendKeys(text);
   }
 
-  public void addNew() {
-    click(By.linkText("add new"));
-  }
 
   public void selectContact() {
     if (!wd.findElement(By.name("selected[]")).isSelected()) {
@@ -77,7 +74,6 @@ public class ContactHelper extends HelperBase {
   }
 
   public void createContact(ContactData contact) {
-    addNew();
     fillContactForm(contact,true);
     submit();
     gotoContainer();
@@ -85,5 +81,9 @@ public class ContactHelper extends HelperBase {
 
   public boolean isThereAContact() {
     return isElementPresent(By.name("selected[]"));
+  }
+
+  public int getContactCount() {
+    return wd.findElements(By.name("selected[]")).size();
   }
 }
