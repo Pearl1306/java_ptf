@@ -16,12 +16,18 @@ public class GroupDeletionTests extends TestBase {
     if (!app.getGroupHelper().isThereAGroup()) {
       app.getGroupHelper().createGroup(new GroupData("test1", "null", "null"));
     }
-    List<GroupData> before=app.getGroupHelper().getGroupList();
-    app.getGroupHelper().selectGroup( before.size() -1);
+    List<GroupData> before = app.getGroupHelper().getGroupList();
+    app.getGroupHelper().selectGroup(before.size() - 1);
     app.getGroupHelper().deleteSelectedGroup();
     app.getGroupHelper().returnToGroupPage();
-    List<GroupData> after =app.getGroupHelper().getGroupList();
-    Assert.assertEquals(after.size(),before.size()-1);
+    List<GroupData> after = app.getGroupHelper().getGroupList();
+    Assert.assertEquals(after.size(), before.size() - 1);
+
+    before.remove(before.size() - 1);
+    //peremennaya "before" ssylaetsya ne na stariy spisok, a na stariy spisok v kotor udalen nenujniy element
+
+    Assert.assertEquals(after, before);
+
   }
 
 
