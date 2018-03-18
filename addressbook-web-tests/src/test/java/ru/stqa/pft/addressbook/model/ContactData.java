@@ -3,7 +3,7 @@ package ru.stqa.pft.addressbook.model;
 import java.util.Objects;
 
 public class ContactData {
-  private final String id;
+  private int id;
   private final String firstname;
   private final String lastname;
   private final String title;
@@ -15,16 +15,17 @@ public class ContactData {
   private final String email;
   private String group;
 
-  public String getId() {
+
+  public int getId() {
     return id;
   }
 
-
   public ContactData(String firstname, String lastname, String title, String company, String address, String home, String mobile, String work, String email, String group) {
-    this.id = null;
+    this.id = Integer.MAX_VALUE;
     this.firstname = firstname;
     this.lastname = lastname;
     this.title = title;
+
     this.company = company;
     this.address = address;
     this.home = home;
@@ -34,7 +35,7 @@ public class ContactData {
     this.group = group;
   }
 
-  public ContactData(String id, String firstname, String lastname, String title, String company, String address, String home, String mobile, String work, String email, String group) {
+  public ContactData(int id, String firstname, String lastname, String title, String company, String address, String home, String mobile, String work, String email, String group) {
     this.id = id;
     this.firstname = firstname;
     this.lastname = lastname;
@@ -88,6 +89,10 @@ public class ContactData {
     return group;
   }
 
+  public void setId(int id) {
+    this.id = id;
+  }
+
   @Override
   public String toString() {
     return "ContactData{" +
@@ -95,19 +100,19 @@ public class ContactData {
             ", firstname='" + firstname + '\'' +
             '}';
   }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     ContactData that = (ContactData) o;
-    return Objects.equals(id, that.id) &&
-            Objects.equals(firstname, that.firstname);
+    return Objects.equals(firstname, that.firstname);
   }
 
   @Override
   public int hashCode() {
 
-    return Objects.hash(id, firstname);
+    return Objects.hash(firstname);
   }
+
+
 }
