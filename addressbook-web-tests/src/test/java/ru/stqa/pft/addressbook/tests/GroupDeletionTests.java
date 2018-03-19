@@ -16,7 +16,7 @@ public class GroupDeletionTests extends TestBase {
       app.getGroupHelper().createGroup(new GroupData("test1", "null", "null"));
     }
   }
-  
+
   @Test
   public void testsGroupDeletion() {
     List<GroupData> before = app.getGroupHelper().getGroupList();
