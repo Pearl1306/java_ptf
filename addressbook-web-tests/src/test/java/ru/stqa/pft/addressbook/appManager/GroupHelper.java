@@ -34,7 +34,7 @@ public class GroupHelper extends HelperBase {
   }
 
   public void deleteSelectedGroup() {
-    click(By.name("delete"));
+    click(By.name("deleteSelected"));
   }
 
   public void selectGroup(int index) {
