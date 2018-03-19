@@ -11,27 +11,27 @@ public class GroupDeletionTests extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions(){
-    app.getNavigationHelper().gotoGroupPage();
-    if (!app.getGroupHelper().isThereAGroup()) {
-      app.getGroupHelper().createGroup(new GroupData("test1", "null", "null"));
+    app.goTo().groupPage();
+    if (app.goup().list().size()==0) {
+      app.goup().create(new GroupData("test1", "null", "null"));
     }
   }
 
   @Test
   public void testsGroupDeletion() {
-    List<GroupData> before = app.getGroupHelper().getGroupList();
-    app.getGroupHelper().selectGroup(before.size() - 1);
-    app.getGroupHelper().deleteSelectedGroup();
-    app.getGroupHelper().returnToGroupPage();
-    List<GroupData> after = app.getGroupHelper().getGroupList();
-    Assert.assertEquals(after.size(), before.size() - 1);
+    List<GroupData> before = app.goup().list();
+    int index = before.size() - 1;
+    app.goup().delete(index);
+    List<GroupData> after = app.goup().list();
+    Assert.assertEquals(after.size(), index);
 
-    before.remove(before.size() - 1);
+    before.remove(index);
     //peremennaya "before" ssylaetsya ne na stariy spisok, a na stariy spisok v kotor udalen nenujniy element
 
     Assert.assertEquals(after, before);
 
   }
+
 
 
 }

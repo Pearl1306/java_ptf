@@ -41,18 +41,18 @@ public class ApplicationManager {
     sessionHelper.login("admin", "secret");
   }
 
-  
+
   public void stop() {
     wd.quit();
   }
 
-  public GroupHelper getGroupHelper() {
+  public GroupHelper goup() {
     return groupHelper;
   }
   public ContactHelper getHelper() {
     return helper;
   }
-  public NavigationHelper getNavigationHelper() {
+  public NavigationHelper goTo() {
     return navigationHelper;
   }
 }
