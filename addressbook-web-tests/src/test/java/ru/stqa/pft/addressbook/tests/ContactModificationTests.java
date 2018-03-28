@@ -13,7 +13,9 @@ public class ContactModificationTests extends TestBase {
   public void ensurePriconditions(){
     app.goTo().home();
     if (app.contact().all().size()==0) {
-      app.contact().create(new ContactData().withFirstname("otvet0").withLastname("otvet1"));
+      app.contact().create(new ContactData().withFirstname("otvet0")
+              .withLastname("otvet1").withHome("1234567890")
+              .withMobile("2345678901").withWork("3456789012"));
     }
   }
   @Test

@@ -14,12 +14,21 @@ public class ContactData {
   private String work;
   private String email;
   private String group;
+  private String allPhones;
+
+  public String getAllPhones() {
+    return allPhones;
+  }
+
+  public ContactData withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
+  }
 
   public ContactData withId(int id) {
     this.id = id;
     return this;
   }
-
 
   public ContactData  withFirstname(String firstname) {
     this.firstname = firstname;
@@ -141,5 +150,6 @@ public class ContactData {
 
     return Objects.hash(id, firstname, lastname, home, mobile, work);
   }
+
 
 }
