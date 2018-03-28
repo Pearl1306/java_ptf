@@ -118,7 +118,9 @@ public class ContactHelper extends HelperBase {
       String lastname = cells.get(1).getText();
       String allPhones = cells.get(5).getText();
       String allEmails = cells.get(4).getText();
-      contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname)
+      String address = cells.get(3).getText();
+      contacts.add(new ContactData().withId(id).withFirstname(firstname)
+              .withLastname(lastname).withAddress(address)
               .withAllPhones(allPhones).withAllEmails(allEmails));
     }
     return contacts;
