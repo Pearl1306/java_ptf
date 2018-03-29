@@ -23,8 +23,8 @@ public class ContactCreationTests extends TestBase {
     ContactData contact = new ContactData().withFirstname("otvet0")
             .withLastname("otvet1").withTitle("otvet2").withCompany("otvet3").
                     withAddress("44 otvet4").withHome("1234567890").withMobile("2345678901").
-                    withWork("3456789012").withEmail("otvet5@gmail.com").withEmail2("null")
-            .withEmail3("null").withGroup("test1");
+                    withWork("3456789012").withAllPhones("1234567890\n 2345678901\n 3456789012\n").withEmail("otvet5@gmail.com").withEmail2("otvet6@gmail.com")
+            .withEmail3("otvet7@gmail.com").withAllEmails("otvet5@gmail.com\n otvet6@gmail.com\n otvet7@gmail.com\n").withGroup("test1");
     app.contact().create(contact);
     assertThat(app.contact().count(), equalTo(before.size() + 1));
     Contacts after = app.contact().all();

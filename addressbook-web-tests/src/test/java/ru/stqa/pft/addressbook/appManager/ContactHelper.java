@@ -120,7 +120,7 @@ public class ContactHelper extends HelperBase {
       String allEmails = cells.get(4).getText();
       String address = cells.get(3).getText();
       contacts.add(new ContactData().withId(id).withFirstname(firstname)
-              .withLastname(lastname).withAddress(address)
+              .withLastname(lastname)
               .withAllPhones(allPhones).withAllEmails(allEmails));
     }
     return contacts;

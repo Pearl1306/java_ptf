@@ -77,7 +77,6 @@ public class ContactData {
   }
 
 
-
   public ContactData  withWork(String work) {
     this.work = work;
 
