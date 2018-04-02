@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 
+import java.io.File;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
@@ -19,19 +20,23 @@ public class ContactCreationTests extends TestBase {
   @Test
   public void testsContactCreation() {
     app.goTo().home();
-    Contacts before = app.contact().all();
-    ContactData contact = new ContactData().withFirstname("otvet0")
-            .withLastname("otvet1").withTitle("otvet2").withCompany("otvet3").
-                    withAddress("44 otvet4").withHome("1234567890").withMobile("2345678901").
-                    withWork("3456789012").withAllPhones("1234567890\n 2345678901\n 3456789012\n").withEmail("otvet5@gmail.com").withEmail2("otvet6@gmail.com")
-            .withEmail3("otvet7@gmail.com").withAllEmails("otvet5@gmail.com\n otvet6@gmail.com\n otvet7@gmail.com\n").withGroup("test1");
-    app.contact().create(contact);
-    assertThat(app.contact().count(), equalTo(before.size() + 1));
-    Contacts after = app.contact().all();
-    assertThat(after, equalTo(before.withAdded(contact.
-            withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
+    app.contact().addNewContact();
+    File photo = new File("src/test/resources/rose.jpg");
+    app.contact().fillContactForm(new ContactData().withFirstname("test_name").withLastname("test_lastname")
+            .withPhoto(photo).withGroup("test1"), true);
+    app.contact().submit();
+    app.contact().returnToHomePage();
 
   }
 
+  @Test(enabled = false)
+  public void currentDir() {
+    File currentDir = new File(".");
+    System.out.println(currentDir.getAbsolutePath());
+    File photo = new File("src/test/resources/rose.jpg");
+    System.out.println(photo.getAbsolutePath());
+    System.out.println(photo.exists());
+
+  }
 
 }
