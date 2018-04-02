@@ -158,8 +158,7 @@ public class ContactData {
             "id=" + id +
             ", firstname='" + firstname + '\'' +
             ", lastname='" + lastname + '\'' +
-            ", allEmails='" + allEmails + '\'' +
-            ", allPhones='" + allPhones + '\'' +
+            ", address='" + address + '\'' +
             '}';
   }
 
@@ -171,14 +170,12 @@ public class ContactData {
     return id == that.id &&
             Objects.equals(firstname, that.firstname) &&
             Objects.equals(lastname, that.lastname) &&
-            Objects.equals(allEmails, that.allEmails) &&
-            Objects.equals(allPhones, that.allPhones);
+            Objects.equals(address, that.address);
   }
 
   @Override
   public int hashCode() {
 
-    return Objects.hash(id, firstname, lastname, allEmails, allPhones);
+    return Objects.hash(id, firstname, lastname, address);
   }
-
 }

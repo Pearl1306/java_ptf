@@ -30,4 +30,9 @@ public class Contacts extends ForwardingSet<ContactData>{
     contacts.remove(contact);
     return contacts;
   }
+
+  public Contacts with(ContactData contactInfoFromEditForm) {
+    Contacts contacts = new Contacts(this);
+    return contacts;
+  }
 }
