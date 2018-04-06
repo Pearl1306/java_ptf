@@ -11,7 +11,8 @@ import ru.stqa.pft.addressbook.appManager.ContactHelper;
 public class TestBase {
   public ContactHelper helper;
 
-  public static final ApplicationManager app = new ApplicationManager(BrowserType.CHROME);
+  public static final ApplicationManager app
+          = new ApplicationManager(System.getProperty("browser", BrowserType.CHROME));
 
 
   @BeforeSuite
