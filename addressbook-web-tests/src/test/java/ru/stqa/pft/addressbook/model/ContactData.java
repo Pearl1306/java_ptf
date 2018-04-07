@@ -2,33 +2,78 @@ package ru.stqa.pft.addressbook.model;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.io.File;
 import java.util.Objects;
+
+@Entity
+@Table(name = "addressbook")
 @XStreamAlias("contact")
 public class ContactData {
   @XStreamOmitField
+  @Id
+  @Column(name = "id")
   private int id = Integer.MAX_VALUE;
+  @Column(name = "firstname")
   private String firstname;
+
+  @Column(name = "lastname")
   private String lastname;
+
+  @Transient //annotaciya chtob propustit pole ,ne izvlekat iz bazy dannyh
+  @Column(name = "title")
   private String title;
+
+  @Transient
+  @Column(name = "company")
   private String company;
+
+  @Column(name = "address")
+  @Type(type = "text")//hibernate, ukazat tip,kogda tip ne raspoznaetsya
   private String address;
+
+  @Column(name = "home")
+  @Type(type = "text")
   private String home;
+
+  @Column(name = "mobile")
+  @Type(type = "text")
   private String mobile;
+
+  @Column(name = "work")
+  @Type(type = "text")
   private String work;
+
+  @Column(name = "email")
+  @Type(type = "text")
   private String email;
+
+  @Column(name = "email2")
+  @Type(type = "text")
   private String email2;
+
+  @Column(name = "email3")
+  @Type(type = "text")
   private String email3;
+
+  @Transient
   private String allEmails;
+  @Transient
   private String group;
+  @Transient
   private String allPhones;
-  private File photo;
+
+  @Column(name = "photo")
+  @Type(type = "text")
+  private String photo;
 
   public ContactData withAllPhones(String allPhones) {
     this.allPhones = allPhones;
     return this;
   }
+
   public ContactData withAllEmails(String allEmails) {
     this.allEmails = allEmails;
     return this;
@@ -39,17 +84,17 @@ public class ContactData {
     return this;
   }
 
-  public ContactData  withFirstname(String firstname) {
+  public ContactData withFirstname(String firstname) {
     this.firstname = firstname;
     return this;
   }
 
-  public ContactData  withLastname(String lastname) {
+  public ContactData withLastname(String lastname) {
     this.lastname = lastname;
     return this;
   }
 
-  public ContactData  withTitle(String title) {
+  public ContactData withTitle(String title) {
     this.title = title;
     return this;
   }
@@ -59,32 +104,33 @@ public class ContactData {
     return this;
   }
 
-  public ContactData  withAddress(String address) {
+  public ContactData withAddress(String address) {
     this.address = address;
     return this;
   }
 
-  public ContactData  withHome(String home) {
+  public ContactData withHome(String home) {
     this.home = home;
     return this;
   }
 
-  public ContactData  withMobile(String mobile) {
+  public ContactData withMobile(String mobile) {
     this.mobile = mobile;
     return this;
   }
 
 
-  public ContactData  withWork(String work) {
+  public ContactData withWork(String work) {
     this.work = work;
 
     return this;
   }
 
-  public ContactData  withEmail(String email) {
+  public ContactData withEmail(String email) {
     this.email = email;
     return this;
   }
+
   public ContactData withEmail2(String email2) {
     this.email2 = email2;
     return this;
@@ -95,8 +141,9 @@ public class ContactData {
     this.email3 = email3;
     return this;
   }
+
   public ContactData withPhoto(File photo) {
-    this.photo = photo;
+    this.photo = photo.getPath();
     return this;
   }
 
@@ -108,6 +155,7 @@ public class ContactData {
   public int getId() {
     return id;
   }
+
   public String getFirstname() {
     return firstname;
   }
@@ -143,19 +191,23 @@ public class ContactData {
   public String getEmail() {
     return email;
   }
+
   public String getEmail3() {
     return email3;
   }
+
   public String getEmail2() {
     return email2;
   }
+
   public File getPhoto() {
-    return photo;
+    return new File(photo);
   }
 
   public String getAllPhones() {
     return allPhones;
   }
+
   public String getAllEmails() {
     return allEmails;
   }
