@@ -6,7 +6,9 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.File;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "addressbook")
@@ -62,6 +64,7 @@ public class ContactData {
   private String allEmails;
   @Transient
   private String group;
+  
   @Transient
   private String allPhones;
 
@@ -70,8 +73,8 @@ public class ContactData {
   @Type(type = "text")
   private String photo;
 
-
-
+//@ManyToMany
+//private Set<GroupData> groups= new HashSet<GroupData>();
 
 
   public ContactData withAllPhones(String allPhones) {
