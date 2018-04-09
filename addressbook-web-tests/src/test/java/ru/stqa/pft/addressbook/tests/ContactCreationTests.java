@@ -34,17 +34,34 @@ public class ContactCreationTests extends TestBase {
 
   @Test(dataProvider = "validContacts")
   public void testsContactCreation(ContactData contact) {
-      app.goTo().home();
-      app.contact().addNewContact();
+    Contacts before = app.db().contacts();
+    app.goTo().home();
+    app.contact().addNewContact();
       File photo = new File("src/test/resources/rose.jpg");
       app.contact().fillContactForm(new ContactData().withFirstname("test_name").withLastname("test_lastname")
               .withPhoto(photo).withGroup("test1"), true);
       app.contact().submit();
       app.contact().returnToHomePage();
+    Contacts after = app.db().contacts();
+    assertThat(after, equalTo(before.withAdded(contact.
+            withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
 
-    }
 
+  }
+   /*     app.goTo().home();
+  Contacts before = app.contact().all();
+  ContactData contact = new ContactData().withFirstname("otvet0")
+          .withLastname("otvet1").withTitle("otvet2").withCompany("otvet3").
+                  withAddress("44 otvet4").withHome("1234567890").withMobile("2345678901").
+                  withWork("3456789012").withAllPhones("1234567890\n 2345678901\n 3456789012\n").withEmail("otvet5@gmail.com").withEmail2("otvet6@gmail.com")
+          .withEmail3("otvet7@gmail.com").withAllEmails("otvet5@gmail.com\n otvet6@gmail.com\n otvet7@gmail.com\n").withGroup("test1");
+    app.contact().create(contact);
+  assertThat(app.contact().count(), equalTo(before.size() + 1));
+  Contacts after = app.contact().all();
+  assertThat(after, equalTo(before.withAdded(contact.
+          withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
 
+*/
   @Test(enabled = false)
   public void currentDir() {
     File currentDir = new File(".");

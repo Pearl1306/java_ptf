@@ -65,9 +65,14 @@ public class ContactData {
   @Transient
   private String allPhones;
 
+  @Transient
   @Column(name = "photo")
   @Type(type = "text")
   private String photo;
+
+
+
+
 
   public ContactData withAllPhones(String allPhones) {
     this.allPhones = allPhones;
@@ -222,7 +227,19 @@ public class ContactData {
             "id=" + id +
             ", firstname='" + firstname + '\'' +
             ", lastname='" + lastname + '\'' +
+            ", title='" + title + '\'' +
+            ", company='" + company + '\'' +
             ", address='" + address + '\'' +
+            ", home='" + home + '\'' +
+            ", mobile='" + mobile + '\'' +
+            ", work='" + work + '\'' +
+            ", email='" + email + '\'' +
+            ", email2='" + email2 + '\'' +
+            ", email3='" + email3 + '\'' +
+            ", allEmails='" + allEmails + '\'' +
+            ", group='" + group + '\'' +
+            ", allPhones='" + allPhones + '\'' +
+            ", photo='" + photo + '\'' +
             '}';
   }
 
@@ -234,12 +251,24 @@ public class ContactData {
     return id == that.id &&
             Objects.equals(firstname, that.firstname) &&
             Objects.equals(lastname, that.lastname) &&
-            Objects.equals(address, that.address);
+            Objects.equals(title, that.title) &&
+            Objects.equals(company, that.company) &&
+            Objects.equals(address, that.address) &&
+            Objects.equals(home, that.home) &&
+            Objects.equals(mobile, that.mobile) &&
+            Objects.equals(work, that.work) &&
+            Objects.equals(email, that.email) &&
+            Objects.equals(email2, that.email2) &&
+            Objects.equals(email3, that.email3) &&
+            Objects.equals(allEmails, that.allEmails) &&
+            Objects.equals(group, that.group) &&
+            Objects.equals(allPhones, that.allPhones) &&
+            Objects.equals(photo, that.photo);
   }
 
   @Override
   public int hashCode() {
 
-    return Objects.hash(id, firstname, lastname, address);
+    return Objects.hash(id, firstname, lastname, title, company, address, home, mobile, work, email, email2, email3, allEmails, group, allPhones, photo);
   }
 }
