@@ -37,9 +37,11 @@ public class ContactCreationTests extends TestBase {
     Contacts before = app.db().contacts();
     app.goTo().home();
     app.contact().addNewContact();
-      File photo = new File("src/test/resources/rose.jpg");
+     // File photo = new File("src/test/resources/rose.jpg");
       app.contact().fillContactForm(new ContactData().withFirstname("test_name").withLastname("test_lastname")
-              .withPhoto(photo).withGroup("test1"), true);
+              .withAddress("44 otvet4").withHome("1234567890").
+              withMobile("2345678901").withWork("3456789012").withEmail("otvet5@gmail.com")
+              .withEmail2("ee@gmail.com").withEmail3("gg@gmail.com"), true);
       app.contact().submit();
       app.contact().returnToHomePage();
     Contacts after = app.db().contacts();
