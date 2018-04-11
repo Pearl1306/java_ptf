@@ -8,6 +8,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.io.*;
 import java.util.*;
@@ -34,14 +35,19 @@ public class ContactCreationTests extends TestBase {
 
   @Test(dataProvider = "validContacts")
   public void testsContactCreation(ContactData contact) {
+    Groups groups=app.db().groups();
+    // File photo = new File("src/test/resources/rose.jpg");
+    if (groups.size() == 0) {
+
+    }
+    ContactData newContact = new ContactData().withFirstname("test_name").withLastname("test_lastname")
+            .withAddress("44 otvet4").withHome("1234567890").
+            withMobile("2345678901").withWork("3456789012").withEmail("otvet5@gmail.com")
+            .withEmail2("ee@gmail.com").withEmail3("gg@gmail.com").inGroup(groups.iterator().next());
     Contacts before = app.db().contacts();
     app.goTo().home();
     app.contact().addNewContact();
-     // File photo = new File("src/test/resources/rose.jpg");
-      app.contact().fillContactForm(new ContactData().withFirstname("test_name").withLastname("test_lastname")
-              .withAddress("44 otvet4").withHome("1234567890").
-              withMobile("2345678901").withWork("3456789012").withEmail("otvet5@gmail.com")
-              .withEmail2("ee@gmail.com").withEmail3("gg@gmail.com"), true);
+      app.contact().fillContactForm(newContact, true);
       app.contact().submit();
       app.contact().returnToHomePage();
     Contacts after = app.db().contacts();
